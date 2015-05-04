@@ -161,7 +161,7 @@ Here we are calling our story *"Captain Matsushima and the rainbow spitting Fung
 
 ### Enters some Javascript
 
-Before everything, you might want to set up some custom variables and functions and whatsoever using Javascript, and that's what the `initscript` tag is used for. You want to attach all your custom code to the global `story` object. Its content is executed like regular Javascript code before everything else once the story starts. Let's revise our code to include some initialization.
+Before everything, you might want to set up some custom variables and functions and whatever using Javascript, and that's what the `initscript` tag is used for. You want to attach all your custom code to the global `story` object. Its content is executed like regular Javascript code before everything else once the story starts. Let's revise our code to include some initialization.
 
 ``` xml
 <div id="story">
@@ -219,13 +219,13 @@ It's time to add some action.
 </paragraph>
 ```
 
-`laser guns` and `sonic screwdrivers` are now links. They show the text of the paragraphs they're linked to, but, unlike `<turn>`, `<show>` doesn't change the page. Mind that we defined `<paragraph id="doctorScrewDriver">` within the `weaponRoom` (because it is a chuck of text only relevant to this context), but a more general paragraph (`notGoodIdea`) is outside the scope of the page, and hence callable by any other page in the story. This is a neat way to organize your code.
+`laser guns` and `sonic screwdrivers` are now links. They show the text of the paragraphs they're linked to, but unlike `<turn>`, `<show>` doesn't change the page. Mind that we defined `<paragraph id="doctorScrewDriver">` within the `weaponRoom` (because it is a chuck of text only relevant to this context), but a more general paragraph (`notGoodIdea`) is outside the scope of the page, and hence callable by any other page in the story. This is a neat way to organize your code.
 
 <a name="templateEngine"></a>
 
 ### Template engine
 
-The true power of Dedalus relies on the possibilities offered by the template engine it adopted, [doT.js](http://olado.github.io/doT/index.html). Everywhere we present a text (within pages, paragraphs, or objects actions) we can make this text dynamic. Let's add an example:
+The true power of Dedalus relies on the possibilities offered by the template engine it adopted, [doT.js](http://olado.github.io/doT/index.html). Everywhere we present a text (within pages, paragraphs, or objects actions) that we can make this text dynamic. Let's add an example:
 
 ``` xml
 <paragraph id="doctorScrewDriver">
@@ -240,7 +240,7 @@ The true power of Dedalus relies on the possibilities offered by the template en
 
 The curly syntax is that of our template engine. The question mark and double question marks define a *if-then-else* block. Here we are using our custom fuction to check if the captain is a maniac (for example he killed 12 aliens), and if so print *"You already killed too many people! Remember? 12 of those poor souls!"*, else print *"You'd better leave it off, or the Doctor might get angry."*.
 
-An *if* block is one of the most useful construct you can use, but you'd better teach yourself the whole syntax of doT.js. It is really simple and can help you write amazing stories. Here we are also using `{{= }}` that prints a variable and simply executing Javascript code with `{{}}` (we change the value of the variable `story.triedToTakeTheScrewDriver`).
+An *if* block is one of the most useful constructs you can use, but you'd better teach yourself the whole syntax of doT.js. It's really simple and can help you write amazing stories. Here we are also using `{{= }}` that prints a variable and simply executing Javascript code with `{{}}` (we change the value of the variable `story.triedToTakeTheScrewDriver`).
 
 <a name="objects"></a>
 
@@ -383,7 +383,7 @@ Sometimes you can perform some actions on an object, and sometimes you can't. Fo
 
 ### Before and after actions
 
-If you looked at the source code of the example story, you might have noticed *before*something and *after*something tags lying around. After/Before actions are a flexible tool to provide dynamism outside the bounding scopes of pages and paragraphs.
+If you looked at the source code of the example story, you might have noticed *before* something and *after* something tags lying around. After/Before actions are a flexible tool to provide dynamism outside the bounding scopes of pages and paragraphs.
 
 Matsushima's sworn enemy Lord Evilord has hit our hero's spaceship with a photon rocket and, to add color to our story, every once in a while the on-board computer repeats worrisome alerts. We could implement this by calling an action (within `{{}}`) everytime the hero enters any room of the intergalactic vessel (read: everytime the player "turns a page"), but this would become boring very soon. Let's write our more cleaver solution by extending initscript and adding some code in `<afterEveryPageTurn>`:
 
@@ -450,7 +450,7 @@ Also, note that we could have written the alter function right within afterEvery
 
 ### Disabling links
 
-Captain Mastsushima's ship has an additional artificial intelligence system just to manage weapons. It consists of a human brain in suspended animation that is in charge of taking the decisions Anna cannot take with her synthetic mind. Matsushima knows that he shouldn't enter the brain's room for it is very, very delicate and nothing there must be touched. But, you know, he's there searching for the *rainbow blaster*, a weapon that he knows is on board but nobody could remember where exactly.
+Captain Mastsushima's ship has an additional artificial intelligence system just to manage weapons. It consists of a human brain in suspended animation that's in charge of making the decisions Anna cannot take with her synthetic mind. Matsushima knows that he shouldn't enter the brain's room for it is very, very delicate and nothing there must be touched. But, you know, he's there searching for the *rainbow blaster*, a weapon that he knows is on board but nobody could remember where exactly.
 
 ``` xml
 <page id="brainRoom">
@@ -544,7 +544,7 @@ Now, suppose that when the space vessel is hit by the rocket we set a variable
 </paragraph>
 ```
 
-We take note of the current value of the counter `getNumTotalActions()`. Now our hero has only 20 actions before the crew dies suffocated!
+We take note of the current value of the counter `getNumTotalActions()`. Now our hero has only 20 actions before the crew dies, suffocated!
 
 ``` xml
 <afterEveryThing>
@@ -561,7 +561,7 @@ We take note of the current value of the counter `getNumTotalActions()`. Now our
 
 Omitting the fact that when the air goes away the hero dies eaten by a grue without much more explained (!), we see here how before/after actions and counters are a powerful combination that let us add dynamic behaviour that is not bound to pages and paragraphs but that has a global scope, eventually linked with in-game pace.
 
-`story.endGame()` is yet another utility function that the system provides and without surprice puts a halt to the story.
+`story.endGame()` is yet another utility function that the system provides and without surprise puts a halt to the story.
 
 <a name="managingLargeProjects"></a>
 
